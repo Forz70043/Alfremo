@@ -1,0 +1,27 @@
+{
+  "name": "alfremo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "googleapis": "^113.0.0",
+    "i18next": "^22.4.10",
+    "next-i18next": "^13.1.5",
+    "next-intl": "^2.10.2",
+    "react-i18next": "^12.2.0",
+    "validator": "^13.9.0",
+    "nodemailer": "^6.9.1",
+    "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "^2.0.16",
+    "@popperjs/core": "2.9.1",
+    "@tailwindcss/forms": "0.2.1"
+  }
+}
