@@ -5,7 +5,7 @@ import Login from '@/components/LoginComponent'
 import Register from '@/components/RegisterComponent'
 import NavbarComponent from '@/components/Navbar';
 import {useRouter} from 'next/router';
-
+import CardComponent from '@/components/CardComponent'
   
 
 const inter = Inter({ subsets: ['latin'] });
@@ -17,9 +17,9 @@ export default function Home() {
   console.log(pathRoute)
   return (
     <>
-      <NavbarComponent currentPage={pathRoute === '/' ? 'home' : pathRoute} titleBrand="Alfremo" />
+      <NavbarComponent currentPage={pathRoute} titleBrand="Alfremo" />
       <main className={styles.main}>
-        
+        <CardComponent />
         {/* {<div className={styles.description}>
           <p>
             Get started by editing&nbsp;
