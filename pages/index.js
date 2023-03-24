@@ -1,13 +1,25 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Login from '@/components/LoginComponent'
+import Register from '@/components/RegisterComponent'
+import NavbarComponent from '@/components/Navbar';
+import {useRouter} from 'next/router';
 
-const inter = Inter({ subsets: ['latin'] })
+  
+
+const inter = Inter({ subsets: ['latin'] });
+
 
 export default function Home() {
+  const router = useRouter();
+  let pathRoute = router.pathname;
+  console.log(pathRoute)
   return (
     <>
+      <NavbarComponent currentPage={pathRoute === '/' ? 'home' : pathRoute} titleBrand="Alfremo" />
       <main className={styles.main}>
+        
         {/* {<div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -30,7 +42,8 @@ export default function Home() {
               />
             </a>
           </div>
-        </div>} */}
+          </div>} 
+        */}
 
         {/* {<div className={styles.center}>
           <Image
