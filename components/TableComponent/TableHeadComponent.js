@@ -4,6 +4,7 @@ const tableColumns = [
     'Utente', 
     'Status',
     'Categoria',
+    'Raking',
     'Prezzo'
 ]
 
