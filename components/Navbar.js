@@ -1,11 +1,13 @@
 import { Navbar } from "flowbite-react";
 
-function getCurrentPage(pageInput){
-    if(!pageInput) return false;
-}
+const navbarItems = [
+    {title: 'Home', path:'/', active: false},
+    {title: 'Login', path:'/login', active: false},
+    {title: 'Register', path:'/register', active: false}
+];
 
 export default function NavbarComponent(props){
-    
+
     return(
         <>
             <Navbar fluid={true} rounded={true}>
@@ -15,11 +17,13 @@ export default function NavbarComponent(props){
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
-                    <Navbar.Link href="/home" active={props.currentPage === 'home' ? true : false}> Home</Navbar.Link>
-                    <Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
+                    {navbarItems.map(
+                        (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
+                    )}
+
+                    {/* {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
                     <Navbar.Link href="/services" active={props.currentPage === 'services' ? true : false}> Services</Navbar.Link>
-                    {/* {<Navbar.Link href="/"> Pricing</Navbar.Link>} */}
-                    <Navbar.Link href="/contact" active={props.currentPage === 'contact' ? true : false}> Contact</Navbar.Link>
+                    <Navbar.Link href="/contact" active={props.currentPage === 'contact' ? true : false}> Contact</Navbar.Link>} */}
                 </Navbar.Collapse>
             </Navbar>
         </>
