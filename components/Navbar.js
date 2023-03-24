@@ -3,7 +3,8 @@ import { Navbar } from "flowbite-react";
 const navbarItems = [
     {title: 'Home', path:'/', active: false},
     {title: 'Login', path:'/login', active: false},
-    {title: 'Register', path:'/register', active: false}
+    {title: 'Register', path:'/register', active: false},
+    {title: 'Cerca', path:'/search', active: false}
 ];
 
 export default function NavbarComponent(props){
