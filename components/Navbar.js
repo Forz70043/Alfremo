@@ -1,10 +1,12 @@
 import { Navbar } from "flowbite-react";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const navbarItems = [
     {title: 'Home', path:'/', active: false},
-    {title: 'Login', path:'/login', active: false},
-    {title: 'Register', path:'/register', active: false},
-    {title: 'Cerca', path:'/search', active: false}
+    {title: 'Accedi', path:'/login', active: false},
+    {title: 'Registrati', path:'/register', active: false},
+    {title: 'Cerca', path:'/search', active: false},
+    {title: 'Esci', path:'/logout', active: false},
 ];
 
 export default function NavbarComponent(props){
@@ -19,7 +21,7 @@ export default function NavbarComponent(props){
                 <Navbar.Toggle />
                 <Navbar.Collapse>
                     {navbarItems.map(
-                        (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
+                        (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
                     )}
 
                     {/* {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
