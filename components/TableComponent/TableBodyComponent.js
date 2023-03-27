@@ -34,12 +34,6 @@ export default function TableBodyComponent(){
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell>{rowTable.category}</Table.Cell>
-                                <Table.Cell>{rowTable.price}</Table.Cell>
-                                <Table.Cell>
-                                    <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
-                                        Contatta
-                                    </a>
-                                </Table.Cell>
                                 <Table.Cell>
                                     <Rating key={index+1}>
                                         <Rating.Star />
@@ -49,6 +43,13 @@ export default function TableBodyComponent(){
                                         <Rating.Star filled={false} />
                                     </Rating>
                                 </Table.Cell>
+                                <Table.Cell>{rowTable.price}</Table.Cell>
+                                <Table.Cell>
+                                    <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                                        Contatta
+                                    </a>
+                                </Table.Cell>
+                                
                             </Table.Row>
                         </>
                     )
