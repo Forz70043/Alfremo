@@ -1,6 +1,5 @@
 import NavbarComponent from "@/components/Navbar";
 import SearchComponent from "@/components/SearchComponent";
-import styles from '@/styles/Home.module.css'
 import {useRouter} from 'next/router';
 
 export default function Search() {
@@ -9,9 +8,9 @@ export default function Search() {
     return(
         <>  
             <NavbarComponent currentPage={pathRoute} />
-            <main className={styles.main}>
+            <div>
                 <SearchComponent id="ciccio2" />
-            </main>
+            </div>
         </>
     )
 }
