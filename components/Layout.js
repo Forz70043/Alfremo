@@ -6,7 +6,7 @@ export default function Layout({children}){
     
     return (
         <>
-        <ThemeProvider>
+        <ThemeProvider attribute="class">
             <Header title="Alfremo"/>
             {/* {<NavbarComponent currentPage={children.type.name.toLowerCase()} titleBrand="Alfremo" />} */}
             <main>
