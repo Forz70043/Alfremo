@@ -5,15 +5,16 @@ export default function FooterComponent() {
         <>
             <Footer container={true}>
                 <div className="w-full">
-                    <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+                    <div className="pb-8 grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                         <div>
                             <Footer.Brand href="https://flowbite.com" src="https://flowbite.com/docs/images/logo.svg" 
-                            alt="Flowbite Logo" name="Flowbite" />
+                            alt="Alfremo Logo" name="Alfremo" />
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                             <div>
                                 <Footer.Title title="about" />
                                 <Footer.LinkGroup col={true}>
+                                    <Footer.Link href="/changelog">Changelog</Footer.Link>
                                     <Footer.Link href="#">Link 1</Footer.Link>
                                     <Footer.Link href="#">Link 2</Footer.Link>
                                 </Footer.LinkGroup>
@@ -21,8 +22,7 @@ export default function FooterComponent() {
                             <div>
                                 <Footer.Title title="Follow us" />
                                 <Footer.LinkGroup col={true}>
-                                    <Footer.Link href="#">Github</Footer.Link>
-                                    <Footer.Link href="#">Discord</Footer.Link>
+                                    <Footer.Link href="https://github.com/Forz70043/Alfremo">Github</Footer.Link>
                                 </Footer.LinkGroup>
                             </div>
                             <div>
@@ -36,7 +36,7 @@ export default function FooterComponent() {
                     </div>
                     <Footer.Divider />
                     <div className="w-full sm:flex sm:items-center sm:justify-between">
-                        <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+                        <Footer.Copyright href="#" by="Alfremo™" year={2022} />
                         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                             {/* {<Footer.Icon href="#" icon={BsFacebook} />
                             <Footer.Icon href="#" icon={BsInstagram} />

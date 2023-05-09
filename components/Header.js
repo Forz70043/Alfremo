@@ -1,8 +1,6 @@
 import Head from 'next/head'
-
-
-export default function Header(props){
-    let title = props.title ?? ''
+export default function Header(props) {
+    let title = props.title ?? '';
     return (
         <Head>
             <title>{title}</title>

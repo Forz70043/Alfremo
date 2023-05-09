@@ -4,7 +4,9 @@ import TableComponent from "./TableComponent/TableComponent"
 export default function SearchComponent() {
     return(
         <>
-            <TableComponent />
+            <section className="bg-white p-9 dark:bg-gray-900">
+                <TableComponent />
+            </section>
         </>
     )
 }
