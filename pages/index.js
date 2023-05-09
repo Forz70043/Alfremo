@@ -4,6 +4,7 @@ import NavbarComponent from '@/components/Navbar';
 import {useRouter} from 'next/router';
 import CardComponent from '@/components/CardComponent'
 import { useSession, signIn, signOut } from "next-auth/react"
+import HeaderComponent from '@/components/HeaderComponent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,9 +17,8 @@ export default function Home() {
   return (
     <>
       <NavbarComponent currentPage={pathRoute} titleBrand="Alfremo" />
-      <main className={styles.main}>
-        <CardComponent />
-      </main>
+      <HeaderComponent />
+      <CardComponent />
     </>
   )
 }
