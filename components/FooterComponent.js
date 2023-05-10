@@ -28,8 +28,8 @@ export default function FooterComponent() {
                             <div>
                                 <Footer.Title title="Legal" />
                                 <Footer.LinkGroup col={true}>
-                                    <Footer.Link href="#">Privacy Policy</Footer.Link>
-                                    <Footer.Link href="#">Terms & Conditions</Footer.Link>
+                                    <Footer.Link href="/privacy">Privacy Policy</Footer.Link>
+                                    <Footer.Link href="/terms">Terms & Conditions</Footer.Link>
                                 </Footer.LinkGroup>
                             </div>
                         </div>
