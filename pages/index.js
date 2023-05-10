@@ -4,7 +4,7 @@ import NavbarComponent from '@/components/Navbar';
 import {useRouter} from 'next/router';
 import CardComponent from '@/components/CardComponent'
 import { useSession, signIn, signOut } from "next-auth/react"
-import HeaderComponent from '@/components/HeaderComponent';
+import HeroComponent from '@/components/HeroComponent';
 import PriceComponent from '@/components/PriceComponent';
 import ContentComponent from '@/components/ContentComponent';
 import NewsletterComponent from '@/components/NewsletterComponent';
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <NavbarComponent currentPage={pathRoute} titleBrand="Alfremo" />
-      <HeaderComponent />
+      <HeroComponent />
       <ContentComponent />
       <CardComponent />
       <PriceComponent />
