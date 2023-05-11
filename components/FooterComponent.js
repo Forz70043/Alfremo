@@ -15,8 +15,8 @@ export default function FooterComponent() {
                                 <Footer.Title title="about" />
                                 <Footer.LinkGroup col={true}>
                                     <Footer.Link href="/changelog">Changelog</Footer.Link>
-                                    <Footer.Link href="#">Link 1</Footer.Link>
-                                    <Footer.Link href="#">Link 2</Footer.Link>
+                                    {/* <Footer.Link href="#">Link 1</Footer.Link>
+                                    <Footer.Link href="#">Link 2</Footer.Link> */}
                                 </Footer.LinkGroup>
                             </div>
                             <div>
