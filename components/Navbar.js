@@ -8,7 +8,6 @@ const navbarItems = [
     { title: 'Home', path: '/', active: false },
     { title: 'Accedi', path: '/login', active: false },
     { title: 'Registrati', path: '/register', active: false },
-    {title: 'Cerca', path:'/search', active: false},
 ];
 
 const navbarItemsPrivate = [

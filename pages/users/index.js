@@ -4,6 +4,7 @@ import { Spinner } from '@/components/Spinner';
 import { Layout } from 'components/users';
 import { userService } from 'services';
 import NavbarComponent from '@/components/Navbar';
+import TableComponent from '@/components/TableComponent/TableComponent';
 
 export default Index;
 
@@ -15,65 +16,16 @@ function Index() {
         console.log(users)
     }, []);
 
-    function deleteUser(id) {
-        setUsers(users.map(x => {
-            if (x.id === id) { x.isDeleting = true; }
-            return x;
-        }));
-        userService.delete(id).then(() => {
-            setUsers(users => users.filter(x => x.id !== id));
-        });
-    }
-
     return (
         <>
             <NavbarComponent />
-            <Layout>
-                <h1>Users</h1>
-                <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style={{ width: '30%' }}>First Name</th>
-                            <th style={{ width: '30%' }}>Last Name</th>
-                            <th style={{ width: '30%' }}>Username</th>
-                            <th style={{ width: '10%' }}></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users && users.map(user =>
-                            <tr key={user.id}>
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.username}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}>
-                                    <Link href={`/users/edit/${user.id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
-                                    <button onClick={() => deleteUser(user.id)} className="btn btn-sm btn-danger btn-delete-user" style={{ width: '60px' }} disabled={user.isDeleting}>
-                                        {user.isDeleting
-                                            ? <span className="spinner-border spinner-border-sm"></span>
-                                            : <span>Delete</span>
-                                        }
-                                    </button>
-                                </td>
-                            </tr>
-                        )}
-                        {!users &&
-                            <tr>
-                                <td colSpan="4">
-                                    <Spinner />
-                                </td>
-                            </tr>
-                        }
-                        {users && !users.length &&
-                            <tr>
-                                <td colSpan="4" className="text-center">
-                                    <div className="p-2">No Users To Display</div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </Layout>
+            <section className="dark:bg-gray-900">
+                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                    <h1>Users</h1>
+                    <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
+                    <TableComponent />
+                </div>
+            </section>
         </>
     );
 }
