@@ -7,7 +7,7 @@ export default function FooterComponent() {
                 <div className="w-full">
                     <div className="pb-8 grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                         <div>
-                            <Footer.Brand href="https://flowbite.com" src="https://flowbite.com/docs/images/logo.svg" 
+                            <Footer.Brand href="/" src="https://flowbite.com/docs/images/logo.svg" 
                             alt="Alfremo Logo" name="Alfremo" />
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
@@ -15,8 +15,8 @@ export default function FooterComponent() {
                                 <Footer.Title title="about" />
                                 <Footer.LinkGroup col={true}>
                                     <Footer.Link href="/changelog">Changelog</Footer.Link>
-                                    <Footer.Link href="#">Link 1</Footer.Link>
-                                    <Footer.Link href="#">Link 2</Footer.Link>
+                                    {/* <Footer.Link href="#">Link 1</Footer.Link>
+                                    <Footer.Link href="#">Link 2</Footer.Link> */}
                                 </Footer.LinkGroup>
                             </div>
                             <div>
@@ -28,8 +28,8 @@ export default function FooterComponent() {
                             <div>
                                 <Footer.Title title="Legal" />
                                 <Footer.LinkGroup col={true}>
-                                    <Footer.Link href="#">Privacy Policy</Footer.Link>
-                                    <Footer.Link href="#">Terms & Conditions</Footer.Link>
+                                    <Footer.Link href="/privacy">Privacy Policy</Footer.Link>
+                                    <Footer.Link href="/terms">Terms & Conditions</Footer.Link>
                                 </Footer.LinkGroup>
                             </div>
                         </div>
