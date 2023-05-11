@@ -53,7 +53,7 @@ export default function Register(props) {
                             <div className="flex justify-between sm:flex-row sm:space-y-0 sm:space-x-0">
                                 <div className="flex items-start">
                                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                        {props.titleRegisterLogin ?? 'Crea Account'}
+                                        {props.titleRegisterLogin ?? 'Create Account'}
                                     </h1>
                                 </div>
                                 <ThemeToggle />
@@ -74,7 +74,7 @@ export default function Register(props) {
                                         required={true}
                                     />
                                 </div>
-                                <div className="">
+                                <div className="grid gap-4 mb-4 sm:grid-cols-2">
                                     <div className="">
                                         <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
                                         <input 
@@ -140,12 +140,12 @@ export default function Register(props) {
                                     </div>
                                 </div>
                                 <button disabled={formState.isSubmitting} type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}Crea un account
+                                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}Create account
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Hai già un account ? 
-                                    <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                                        Accedi
+                                    Do you already have an account?
+                                    <a href="/login" className="pl-1 font-medium text-primary-600 hover:underline dark:text-primary-500">
+                                        Sign In
                                     </a>
                                 </p>
                             </form>
