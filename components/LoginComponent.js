@@ -29,7 +29,7 @@ export default function LoginComponent(props) {
         return userService.login(email, password)
             .then(() => {
                 // get return url from query parameters or default to '/'
-                const returnUrl = router.query.returnUrl || '/';
+                const returnUrl = router.query.returnUrl || '/users';
                 router.push(returnUrl);
             })
             .catch(alertService.error);
