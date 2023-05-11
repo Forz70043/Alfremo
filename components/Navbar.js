@@ -1,16 +1,23 @@
 import { Navbar } from "flowbite-react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import ThemeToggle from "./ThemeToggleComponent";
+import { userService } from 'services';
+
 
 const navbarItems = [
     { title: 'Home', path: '/', active: false },
     { title: 'Accedi', path: '/login', active: false },
     { title: 'Registrati', path: '/register', active: false },
     {title: 'Cerca', path:'/search', active: false},
-    { title: 'Esci', path: '/logout', active: false },
+];
+
+const navbarItemsPrivate = [
+    { title: 'Utenti', path: '/users', active: false },
+    { title: 'Esci', path: '/logout', active: false, onClick: (userService.logout) },
 ];
 
 export default function NavbarComponent(props) {
+    
 
     return (
         <>
@@ -24,6 +31,10 @@ export default function NavbarComponent(props) {
                     {navbarItems.map(
                         (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
                     )}
+                    {userService.userValue ?
+                        navbarItemsPrivate.map(
+                        (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
+                    ) : null }
                     <ThemeToggle />
 
                     {/* {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>

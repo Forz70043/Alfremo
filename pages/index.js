@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+// import styles from '@/styles/Home.module.css'
 import NavbarComponent from '@/components/Navbar';
 import {useRouter} from 'next/router';
 import CardComponent from '@/components/CardComponent'
