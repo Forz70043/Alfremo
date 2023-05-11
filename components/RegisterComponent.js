@@ -1,5 +1,9 @@
 import React, { useState } from "react"
 import ThemeToggle from "./ThemeToggleComponent";
+import { useRouter } from "next/router";
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 function handleSwitch(e){
     console.log('clicked', e)
@@ -124,7 +128,7 @@ export default function Register(props) {
                                 </div>
                                 <ThemeToggle />
                             </div>
-                            <form method="POST" className="space-y-4 md:space-y-6" action="/api/form" onSubmit={submitForm}>
+                            <form method="POST" className="space-y-4 md:space-y-6" action="/api/form" onSubmit={handleSubmit(onSubmit)}>
                                 {/* {<div className="flex flex-col gap-4" id="toggle">
                                 <ToggleSwitch checked={false} label="Privato" onChange={handleSwitch(this)} />
                                 </div>} */}
@@ -141,31 +145,33 @@ export default function Register(props) {
                                         value={formData.email}
                                     />
                                 </div>
-                                <div>
-                                    <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
-                                    <input 
-                                        type="text" 
-                                        name="firstName" 
-                                        id="firstName" 
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                        placeholder="" 
-                                        required={true}
-                                        onChange={handleInput} 
-                                        value={formData.firstName}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Last Name</label>
-                                    <input 
-                                        type="email" 
-                                        name="lastName" 
-                                        id="lastName" 
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                        placeholder="" 
-                                        required={true}
-                                        onChange={handleInput} 
-                                        value={formData.lastName}
-                                    />
+                                <div className="flex flex-col">
+                                    <div className="items-start">
+                                        <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="firstName" 
+                                            id="firstName" 
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                            placeholder="" 
+                                            required={true}
+                                            onChange={handleInput} 
+                                            value={formData.firstName}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Last Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="lastName" 
+                                            id="lastName" 
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                            placeholder="" 
+                                            required={true}
+                                            onChange={handleInput} 
+                                            value={formData.lastName}
+                                        />
+                                    </div>
                                 </div>
                                 <div>
                                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
