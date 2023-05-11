@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { userService } from 'services';
 
-function App({Component, pageProps}) {
+function App({ Component, pageProps }) {
 
   //const { data: session, status } = useSession();
   /*if (status === "authenticated") {
@@ -29,32 +29,34 @@ function App({Component, pageProps}) {
 
     // unsubscribe from events in useEffect return function
     return () => {
-        router.events.off('routeChangeStart', hideContent);
-        router.events.off('routeChangeComplete', authCheck);
+      router.events.off('routeChangeStart', hideContent);
+      router.events.off('routeChangeComplete', authCheck);
     }
-}, []);
+  }, []);
 
-function authCheck(url) {
+  function authCheck(url) {
     // redirect to login page if accessing a private page and not logged in 
     setUser(userService.userValue);
     const publicPaths = ['/login', '/register', '/', '/changelog', '/privacy', '/terms', '/forgot-password'];
     const path = url.split('?')[0];
     if (!userService.userValue && !publicPaths.includes(path)) {
-        setAuthorized(false);
-        router.push({
-            pathname: '/',
-            query: { returnUrl: router.asPath }
-        });
+      setAuthorized(false);
+      router.push({
+        pathname: '/',
+        query: { returnUrl: router.asPath }
+      });
     } else {
-        setAuthorized(true);
+      setAuthorized(true);
     }
-}
+  }
 
   return (
     <SessionProvider session={pageProps.session}>
-        <Layout>
+      <Layout>
+        {authorized &&
           <Component {...pageProps} />
-        </Layout>
+        }
+      </Layout>
     </SessionProvider>
   )
 }
