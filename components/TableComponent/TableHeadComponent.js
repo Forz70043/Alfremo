@@ -1,11 +1,9 @@
 import { Table } from "flowbite-react";
 
 const tableColumns = [
-    'Utente', 
-    'Status',
-    'Categoria',
-    'Raking',
-    'Prezzo'
+    'Email', 
+    'First Name',
+    'Last Name',
 ]
 
 export default function TableHeadComponent(){
