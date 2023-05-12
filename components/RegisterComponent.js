@@ -1,37 +1,28 @@
-import React, { useState } from "react"
 import ThemeToggle from "./ThemeToggleComponent";
 import { useRouter } from "next/router";
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { userService, alertService } from 'services';
 
-function handleSwitch(e){
-    console.log('clicked', e)
-}
 
 export default function Register(props) {
     
-    const [formData, setFormData] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        confirmPassword: "",
-        terms: false,
-    });
     const router = useRouter();
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .required('Email is required'),
         firstName: Yup.string()
             .required('First Name is required'),
         lastName: Yup.string()
             .required('Last Name is required'),
-        username: Yup.string()
-            .required('Username is required'),
         password: Yup.string()
             .required('Password is required')
-            .min(6, 'Password must be at least 6 characters')
+            .min(6, 'Password must be at least 6 characters'),
+        terms: Yup.bool()
+            .required('terms is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -40,74 +31,13 @@ export default function Register(props) {
     const { errors } = formState;
 
     function onSubmit(user) {
+        console.log("OnSubmit")
         return userService.register(user)
             .then(() => {
                 alertService.success('Registration successful', true);
                 router.push('login');
             })
             .catch(alertService.error);
-    }
-    const [isLoading, setLoading] = useState(false)
-    const [formSuccess, setFormSuccess] = useState(false)
-    const [formSuccessMessage, setFormSuccessMessage] = useState("")
-
-    const handleInput = (e) => {
-        console.log(e)
-        const fieldName = e.target.name;
-        const fieldValue = e.target.value;
-
-        setFormData((prevState) => ({
-            ...prevState,
-            [fieldName]: fieldValue
-        }));
-    }
-
-    const handleInputRadio = (e) => {
-        const fieldName = 'terms';
-        const fieldValue = e.target.checked;
-
-        setFormData((prevState) => ({
-            ...prevState,
-            [fieldName]: fieldValue
-        }));
-    }
-
-    const submitForm = (e) => {
-        // We don't want the page to refresh
-        setLoading(true)
-        e.preventDefault()
-
-        const formURL = e.target.action
-
-        console.log(formData);
-        console.log("js", JSON.stringify(formData));
-
-        // Turn our formData state into data we can use with a form submission
-        //let data = new FormData();
-        /*Object.entries(formData).forEach(([key, value]) => {
-          data.append(key, value);
-        })*/
-
-        // POST the data to the URL of the form
-        fetch(formURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": 'application/json',
-                Accept: 'application/json',
-            },
-            body: JSON.stringify(formData)
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            setLoading(false);
-            /*setFormData({
-                email: "",
-            })
-            */
-            console.log("rrr", data.data);
-            setFormSuccess(true)
-            //setFormSuccessMessage(data.data)
-        })
     }
 
     return (
@@ -123,12 +53,12 @@ export default function Register(props) {
                             <div className="flex justify-between sm:flex-row sm:space-y-0 sm:space-x-0">
                                 <div className="flex items-start">
                                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                        {props.titleRegisterLogin ?? 'Crea Account'}
+                                        {props.titleRegisterLogin ?? 'Create Account'}
                                     </h1>
                                 </div>
                                 <ThemeToggle />
                             </div>
-                            <form method="POST" className="space-y-4 md:space-y-6" action="/api/form" onSubmit={handleSubmit(onSubmit)}>
+                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
                                 {/* {<div className="flex flex-col gap-4" id="toggle">
                                 <ToggleSwitch checked={false} label="Privato" onChange={handleSwitch(this)} />
                                 </div>} */}
@@ -136,40 +66,37 @@ export default function Register(props) {
                                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                     <input 
                                         type="email" 
-                                        name="email" 
+                                        name="email"
+                                        {...register('email')}
                                         id="email" 
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                                         placeholder="name@company.com" 
                                         required={true}
-                                        onChange={handleInput} 
-                                        value={formData.email}
                                     />
                                 </div>
-                                <div className="flex flex-col">
-                                    <div className="items-start">
+                                <div className="grid gap-4 mb-4 sm:grid-cols-2">
+                                    <div className="">
                                         <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
                                         <input 
                                             type="text" 
-                                            name="firstName" 
+                                            name="firstName"
+                                            {...register('firstName')}
                                             id="firstName" 
                                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                                             placeholder="" 
                                             required={true}
-                                            onChange={handleInput} 
-                                            value={formData.firstName}
                                         />
                                     </div>
                                     <div>
                                         <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Last Name</label>
                                         <input 
                                             type="text" 
-                                            name="lastName" 
+                                            name="lastName"
+                                            {...register('lastName')}
                                             id="lastName" 
                                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                                             placeholder="" 
                                             required={true}
-                                            onChange={handleInput} 
-                                            value={formData.lastName}
                                         />
                                     </div>
                                 </div>
@@ -177,13 +104,12 @@ export default function Register(props) {
                                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                     <input 
                                         type="password" 
-                                        name="password" 
+                                        name="password"
+                                        {...register('password')}
                                         id="password" 
                                         placeholder="••••••••" 
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                                         required={true}
-                                        onChange={handleInput} 
-                                        value={formData.password}
                                         />
                                 </div>
                                 <div>
@@ -195,33 +121,31 @@ export default function Register(props) {
                                         placeholder="••••••••" 
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                                         required={true}
-                                        onChange={handleInput} value={formData.confirmPassword}
                                     />
                                 </div>
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">
                                         <input 
                                             name="terms" 
-                                            id="terms" 
+                                            id="terms"
+                                            {...register('terms')}
                                             aria-describedby="terms" 
                                             type="checkbox" 
                                             className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" 
                                             required={true}
-                                            onChange={handleInputRadio} 
-                                            value={formData.terms}
                                         />
                                     </div>
                                     <div className="ml-3 text-sm">
                                         <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="/terms">Terms and Conditions</a></label>
                                     </div>
                                 </div>
-                                <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    Crea un account
+                                <button disabled={formState.isSubmitting} type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}Create account
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Hai già un account ? 
-                                    <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                                        Accedi
+                                    Do you already have an account?
+                                    <a href="/login" className="pl-1 font-medium text-primary-600 hover:underline dark:text-primary-500">
+                                        Sign In
                                     </a>
                                 </p>
                             </form>
