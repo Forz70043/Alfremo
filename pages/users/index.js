@@ -21,7 +21,7 @@ function Index() {
     return (
         <>
             <NavbarComponent />
-            <section class="bg-gray-10 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+            <section class="bg-gray-10 dark:bg-gray-900 p-3 sm:p-5 antialiased pt-8 pb-8">
                 <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                     <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg mb-5">
                         <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
