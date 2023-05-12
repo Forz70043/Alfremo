@@ -7,7 +7,7 @@ export default function Privacy() {
     let pathRoute = router.pathname.toLocaleLowerCase();
     return(
         <>  
-            <NavbarComponent currentPage={pathRoute} />
+            {/* <NavbarComponent currentPage={pathRoute} /> */}
             <div>
                 <TermsComponent id="changelog" />
             </div>

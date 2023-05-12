@@ -19,7 +19,7 @@ export default function Home() {
   console.log(pathRoute)
   return (
     <>
-      <NavbarComponent currentPage={pathRoute} titleBrand="Alfremo" />
+      {/* <NavbarComponent currentPage={pathRoute} titleBrand="Alfremo" /> */}
       <HeroComponent />
       <ContentComponent />
       <CardComponent />
