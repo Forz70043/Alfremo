@@ -27,6 +27,20 @@ export default function ChangelogComponent(props) {
                         <div class="-my-4 divide-y divide-gray-200 dark:divide-gray-700">
                             <div class="flex flex-col gap-2 py-4 sm:gap-6 sm:flex-row sm:items-center">
                                 <p class="w-32 text-lg font-normal text-gray-500 sm:text-right dark:text-gray-400 shrink-0">
+                                    Version 0.1.1a
+                                </p>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                    <a href="#" class="hover:underline">Fix registration form</a>
+                                </h3>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                    -
+                                </h3>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                    <a href="#" class="hover:underline">Added dashboard view layout</a>
+                                </h3>
+                            </div>
+                            <div class="flex flex-col gap-2 py-4 sm:gap-6 sm:flex-row sm:items-center">
+                                <p class="w-32 text-lg font-normal text-gray-500 sm:text-right dark:text-gray-400 shrink-0">
                                     Version 0.1.1
                                 </p>
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">

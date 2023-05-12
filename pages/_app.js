@@ -52,11 +52,11 @@ function App({ Component, pageProps }) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout>
         {authorized &&
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         }
-      </Layout>
     </SessionProvider>
   )
 }
