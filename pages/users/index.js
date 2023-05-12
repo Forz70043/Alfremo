@@ -6,6 +6,7 @@ import { userService } from 'services';
 import NavbarComponent from '@/components/Navbar';
 import TableComponent from '@/components/TableComponent/TableComponent';
 import { useRouter } from 'next/router';
+import { Alert } from '@/components/Alert';
 
 export default Index;
 
@@ -21,6 +22,7 @@ function Index() {
     return (
         <>
             <NavbarComponent />
+            <Alert />
             <section class="bg-gray-10 dark:bg-gray-900 p-3 sm:p-5 antialiased pt-8 pb-8">
                 <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                     <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg mb-5">

@@ -79,7 +79,7 @@ function AddEdit(props) {
                                 <ToggleSwitch checked={false} label="Privato" onChange={handleSwitch(this)} />
                                 </div>} */}
                                 <div>
-                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <input
                                         type="email"
                                         name="email"
@@ -93,7 +93,7 @@ function AddEdit(props) {
                                 </div>
                                 <div className="grid gap-4 mb-4 sm:grid-cols-2">
                                     <div className="">
-                                        <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
+                                        <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
                                         <input
                                             type="text"
                                             name="firstName"
@@ -106,7 +106,7 @@ function AddEdit(props) {
                                         <div className="invalid-feedback">{errors.firstName?.message}</div>
                                     </div>
                                     <div>
-                                        <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Last Name</label>
+                                        <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
                                         <input
                                             type="text"
                                             name="lastName"

@@ -4,7 +4,7 @@ import FooterComponent from './FooterComponent';
 import NavbarComponent from './Navbar';
 import { userService } from 'services';
 import SidebarComponent from './Sidebar';
-
+import { Alert } from './Alert';
 
 export default function Layout({ children }) {
 
@@ -17,6 +17,7 @@ export default function Layout({ children }) {
                     <div class="antialiased bg-gray-50 dark:bg-gray-900">
                         <SidebarComponent />
                         <main class="p-4 md:ml-64 h-auto pt-20">
+                            <Alert />
                             {children}
                             <footer class="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800">
                                 <p class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
