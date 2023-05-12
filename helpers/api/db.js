@@ -55,7 +55,8 @@ function userModel(sequelize) {
         email: { type: DataTypes.STRING, allowNull: false },
         hash: { type: DataTypes.STRING, allowNull: false },
         firstName: { type: DataTypes.STRING, allowNull: false },
-        lastName: { type: DataTypes.STRING, allowNull: false }
+        lastName: { type: DataTypes.STRING, allowNull: false },
+        terms: { type: DataTypes.BOOLEAN, allowNull: false }
     };
 
     const options = {
