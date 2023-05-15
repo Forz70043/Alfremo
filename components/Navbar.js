@@ -1,7 +1,8 @@
-import { Navbar } from "flowbite-react";
+import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import ThemeToggle from "./ThemeToggleComponent";
 import { userService } from 'services';
+import { useState } from "react";
 
 
 const navbarItems = [
@@ -11,12 +12,10 @@ const navbarItems = [
 ];
 
 const navbarItemsPrivate = [
-    { title: 'Utenti', path: '/users', active: false },
     { title: 'Esci', path: '/logout', active: false, onClick: (userService.logout) },
 ];
 
 export default function NavbarComponent(props) {
-
 
     return (
         <>
@@ -32,7 +31,7 @@ export default function NavbarComponent(props) {
                                 <svg aria-hidden="true" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 <span class="sr-only">Toggle sidebar</span>
                             </button>
-                            <a href="https://flowbite.com" class="flex mr-4">
+                            <a href="http://localhost:3000" class="flex mr-4">
                                 <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="Alfremo Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Alfremo</span>
                             </a>
@@ -63,7 +62,7 @@ export default function NavbarComponent(props) {
                             </button>
 
 
-                            <div class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700" id="notification-dropdown">
+                            <div className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700" id="notification-dropdown">
                                 <div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     Notifications
                                 </div>
@@ -186,9 +185,69 @@ export default function NavbarComponent(props) {
                                     </a>
                                 </div>
                             </div>
-                            <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                            <Dropdown
+                                arrowIcon={false}
+                                inline={true}
+                                label={<Avatar className="ml-2" alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />}
+                            >
+                                <Dropdown.Header>
+                                    <span className="block text-sm">
+                                        {userService.userValue.firstName + ' ' + userService.userValue.lastName}
+                                    </span>
+                                    <span className="block truncate text-sm font-medium">
+                                        {userService.userValue.email}
+                                    </span>
+                                </Dropdown.Header>
+                                {navbarItemsPrivate.map(
+                                    (navbarItem, index) => <Dropdown.Item key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Dropdown.Item>
+                                )}
+                                {/* <Dropdown.Item>
+                                    Dashboard
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    Settings
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    Earnings
+                                </Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item>
+                                    <a href="/logout">Sign out</a>
+                                </Dropdown.Item> */}
+                            </Dropdown>
+                        </div>
+                    </div>
+                </nav>
+                :
+                <Navbar fluid={true} rounded={false} className="bg-white border-b border-gray-100 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+                    <Navbar.Brand href="/">
+                        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Alfremo Logo" />
+                        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{props.titleBrand ?? 'Alfremo'}</span>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse>
+                        {navbarItems.map(
+                            (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
+                        )}
+                        {userService.userValue ?
+                            navbarItemsPrivate.map(
+                                (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
+                            ) : null}
+                        <ThemeToggle />
+
+                        {/* {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
+                    <Navbar.Link href="/services" active={props.currentPage === 'services' ? true : false}> Services</Navbar.Link>
+                    <Navbar.Link href="/contact" active={props.currentPage === 'contact' ? true : false}> Contact</Navbar.Link>} */}
+                    </Navbar.Collapse>
+                </Navbar>
+            }
+        </>
+    )
+}
+
+{/* <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
+                                <img class="w-8 h-8 rounded-full" src="http://localhost:3000/docs/images/people/profile-picture-5.jpg" alt="user photo" />
                             </button>
 
                             <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
@@ -226,33 +285,4 @@ export default function NavbarComponent(props) {
                                         <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                :
-                <Navbar fluid={true} rounded={false} className="bg-white border-b border-gray-100 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
-                    <Navbar.Brand href="/">
-                        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Alfremo Logo" />
-                        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{props.titleBrand ?? 'Alfremo'}</span>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse>
-                        {navbarItems.map(
-                            (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
-                        )}
-                        {userService.userValue ?
-                            navbarItemsPrivate.map(
-                                (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
-                            ) : null}
-                        <ThemeToggle />
-
-                        {/* {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
-                    <Navbar.Link href="/services" active={props.currentPage === 'services' ? true : false}> Services</Navbar.Link>
-                    <Navbar.Link href="/contact" active={props.currentPage === 'contact' ? true : false}> Contact</Navbar.Link>} */}
-                    </Navbar.Collapse>
-                </Navbar>
-            }
-        </>
-    )
-}
+                            </div> */}

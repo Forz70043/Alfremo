@@ -1,21 +1,21 @@
-import { Table } from "flowbite-react";
+import { Table, Checkbox } from "flowbite-react";
 
 const tableColumns = [
-    'Email', 
+    'Email',
     'First Name',
     'Last Name',
     'Action'
 ]
 
-export default function TableHeadComponent(){
-    return(
+export default function TableHeadComponent() {
+    return (
         <>
             <Table.Head>
-                {tableColumns.map((tableColumn, index) => <Table.HeadCell key={index}>{tableColumn}</Table.HeadCell>)}
-                
-                <Table.HeadCell>
-                    <span className="sr-only">Edit</span>
+                <Table.HeadCell className="!p-4">
+                    <Checkbox />
                 </Table.HeadCell>
+                {tableColumns.map((tableColumn, index) => <Table.HeadCell key={index}>{tableColumn}</Table.HeadCell>)}
+
             </Table.Head>
         </>
     )

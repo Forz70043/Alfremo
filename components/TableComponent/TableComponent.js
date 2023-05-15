@@ -5,7 +5,7 @@ import TableBodyComponent from "./TableBodyComponent";
 export default function TableComponent(props){
     return(
         <>
-            <Table id={props.id ?? 'tableDraft'}>
+            <Table id={props.id ?? 'tableDraft'} hoverable={true}>
                 <TableHeadComponent />
                 <TableBodyComponent />
             </Table>
