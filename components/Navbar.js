@@ -201,19 +201,6 @@ export default function NavbarComponent(props) {
                                 {navbarItemsPrivate.map(
                                     (navbarItem, index) => <Dropdown.Item key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Dropdown.Item>
                                 )}
-                                {/* <Dropdown.Item>
-                                    Dashboard
-                                </Dropdown.Item>
-                                <Dropdown.Item>
-                                    Settings
-                                </Dropdown.Item>
-                                <Dropdown.Item>
-                                    Earnings
-                                </Dropdown.Item>
-                                <Dropdown.Divider />
-                                <Dropdown.Item>
-                                    <a href="/logout">Sign out</a>
-                                </Dropdown.Item> */}
                             </Dropdown>
                         </div>
                     </div>
