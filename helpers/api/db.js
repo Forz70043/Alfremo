@@ -41,10 +41,9 @@ async function initialize() {
 
     // init models and add them to the exported db object
     db.User = require("../../server/models/user.model.js")(sequelize, Sequelize);
-    db.Risto = require("../../server/models/role.model.js")(sequelize, Sequelize);
+    db.Role = require("../../server/models/role.model.js")(sequelize, Sequelize);
     db.Risto = require("../../server/models/risto.model.js")(sequelize, Sequelize);
     db.CommentsRisto = require("../../server/models/commentsRisto.model.js")(sequelize, Sequelize);
-
 
     // /** RUOLI */
     // await db.Risto.create({ id: 1, name: "ristoratore" });
