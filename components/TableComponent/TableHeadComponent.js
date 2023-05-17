@@ -4,6 +4,7 @@ const tableColumns = [
     'Email',
     'First Name',
     'Last Name',
+    'Status',
     'Action'
 ]
 
