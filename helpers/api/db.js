@@ -40,54 +40,58 @@ async function initialize() {
     );
 
     // init models and add them to the exported db object
-    db.User = require("../../server/models/user.model.js")(sequelize, Sequelize);
-    db.Role = require("../../server/models/role.model.js")(sequelize, Sequelize);
-    db.Risto = require("../../server/models/risto.model.js")(sequelize, Sequelize);
-    db.CommentsRisto = require("../../server/models/commentsRisto.model.js")(sequelize, Sequelize);
-    db.Notification = require("../../server/models/notification.model.js")(sequelize, Sequelize);
-    db.Event = require("../../server/models/event.model.js")(sequelize, Sequelize);
-    db.Request = require("../../server/models/request.model.js")(sequelize, Sequelize);
+    try {
+        db.User = require("../../server/models/user.model.js")(sequelize, Sequelize);
+        db.Role = require("../../server/models/role.model.js")(sequelize, Sequelize);
+        db.Risto = require("../../server/models/risto.model.js")(sequelize, Sequelize);
+        db.CommentsRisto = require("../../server/models/commentsRisto.model.js")(sequelize, Sequelize);
+        db.Notification = require("../../server/models/notification.model.js")(sequelize, Sequelize);
+        db.Event = require("../../server/models/event.model.js")(sequelize, Sequelize);
+        db.Request = require("../../server/models/request.model.js")(sequelize, Sequelize);
 
-    // /** RUOLI */
-    // await db.Risto.create({ id: 0, name: "user" });
-    // await db.Risto.create({ id: 1, name: "ristoratore" });
-    // await db.Risto.create({ id: 2, name: "worker" });
-    // await db.Risto.create({ id: 99, name: "admin" });
-    // /** FINE RUOLI */
+        // /** RUOLI */
+        await db.Role.create({ id: 1, name: "user" });
+        await db.Role.create({ id: 2, name: "restaurateur" });
+        await db.Role.create({ id: 3, name: "worker" });
+        await db.Role.create({ id: 99, name: "admin" });
+        // /** FINE RUOLI */
 
-    // // Many-to-Many association to connect to the source to multiple targets
-    // // A customer will certainly have a user role and his specialization - Example:
-    // // Client admin = roles['user','admin']
-    // db.Risto.belongsToMany(db.User, {
-    //     through: "user_role",
-    //     foreignKey: "roleId",
-    //     otherKey: "userId"
-    // });
+        // // Many-to-Many association to connect to the source to multiple targets
+        // // A customer will certainly have a user role and his specialization - Example:
+        // // Client admin = roles['user','admin']
+        // db.Risto.belongsToMany(db.User, {
+        //     through: "user_role",
+        //     foreignKey: "roleId",
+        //     otherKey: "userId"
+        // });
 
-    // db.User.belongsToMany(db.Risto, {
-    //     through: "user_role",
-    //     foreignKey: "userId",
-    //     otherKey: "roleId"
-    // });
+        // db.User.belongsToMany(db.Risto, {
+        //     through: "user_role",
+        //     foreignKey: "userId",
+        //     otherKey: "roleId"
+        // });
 
-    // // Ristoranti
-    // db.Risto.belongsTo(db.User, {
-    //     constraints: true,
-    // });
-    // db.User.hasMany(db.Risto);
+        // // Ristoranti
+        // db.Risto.belongsTo(db.User, {
+        //     constraints: true,
+        // });
+        // db.User.hasMany(db.Risto);
 
-    // db.CommentsRisto.belongsTo(db.Risto, {
-    //     constraint: true, onDelete: "CASCADE"
-    // });
-    // db.Risto.hasMany(db.CommentsRisto);
-    // //FINE Ristorianti
-
-
+        // db.CommentsRisto.belongsTo(db.Risto, {
+        //     constraint: true, onDelete: "CASCADE"
+        // });
+        // db.Risto.hasMany(db.CommentsRisto);
+        // //FINE Ristorianti
+        
+    } catch (error) {
+        console.log(error)
+    }
+    
     // sync all models with database
     await sequelize.sync({ alter: true });
     
     // force sync models with database
-    //await sequelize.sync({force: true });
+    //await sequelize.sync({ force: true });
 
     db.initialized = true;
 }
