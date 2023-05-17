@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import mysql from 'mysql2/promise';
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize } from 'sequelize';
 
 const { serverRuntimeConfig } = getConfig();
 
