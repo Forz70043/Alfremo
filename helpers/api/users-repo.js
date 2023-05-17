@@ -28,6 +28,14 @@ async function authenticate({ email, password }) {
     const userJson = user.get();
     delete userJson.hash;
 
+    const params ={
+        status: 'online'
+    }
+
+    Object.assign(user, params);
+
+    await user.save();
+
     // return user and jwt
     return {
         ...userJson,
