@@ -1,5 +1,5 @@
-module.exports = (sequelize, Sequelize) => {
-    const Risto = sequelize.define("ristos", {
+module.exports = function defineRistoModel(sequelize, Sequelize) {
+    const attributes = {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -11,19 +11,18 @@ module.exports = (sequelize, Sequelize) => {
         description: {
             type: Sequelize.STRING           // VARCHAR(255)
         },
-        address:{
+        address: {
             type: Sequelize.STRING
         },
-        owner:{
+        owner: {
             type: Sequelize.INTEGER,
         },
         image: {
             type: Sequelize.BLOB
         }
-    },
-    { 
-        timestamps: true }
-    );
-
-    return Risto;
+    };
+    const options = {
+        timestamps: true
+    }
+    return sequelize.define("Risto", attributes, options);
 };

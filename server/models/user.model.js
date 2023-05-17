@@ -1,5 +1,5 @@
-module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
+module.exports = function defineUserModel(sequelize, Sequelize) {
+  const attributes = {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -8,10 +8,10 @@ module.exports = (sequelize, Sequelize) => {
     avatar: {
       type: Sequelize.BLOB
     },
-    firstname: {
+    firstName: {
       type: Sequelize.STRING
     },
-    lastname: {
+    lastName: {
       type: Sequelize.STRING
     },
     email: {
@@ -32,8 +32,9 @@ module.exports = (sequelize, Sequelize) => {
     phone: {
       type: Sequelize.STRING
     },
-    password: {
-      type: Sequelize.STRING
+    hash: {
+      type: Sequelize.STRING,
+      allowNull: false
     },
     terms: {
       type: Sequelize.STRING
@@ -50,8 +51,19 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.ENUM,
       values: ['active', 'notActive'],
       defaultValue: 'notActive'
-    },
-  });
+    }
+  };
 
-  return User;
+  const options = {
+    defaultScope: {
+      // exclude password hash by default
+      attributes: { exclude: ['hash'] }
+    },
+    scopes: {
+      // include hash with this scope
+      withHash: { attributes: {} }
+    }
+  };
+
+  return sequelize.define("User", attributes, options);
 };

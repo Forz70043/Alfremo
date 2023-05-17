@@ -1,5 +1,5 @@
-module.exports = (sequelize, Sequelize) => {
-    const CommentRisto = sequelize.define("comments_risto", {
+module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
+    const attributes = {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -13,10 +13,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         status: {
             type: Sequelize.ENUM,
-            values: ['approved', 'pending'],
+            values: ['approved', 'pending','notApproved'],
             defaultValue: 'pending'
         },
-    });
-
-    return CommentRisto;
+    };
+    const options = {
+        timestamps: true
+    }
+    return sequelize.define("CommentRisto", attributes, options);
 };
