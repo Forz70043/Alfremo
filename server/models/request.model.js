@@ -1,4 +1,4 @@
-module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
+module.exports = function defineRequestModel(sequelize, Sequelize) {
     const attributes = {
         id: {
             type: Sequelize.INTEGER,
@@ -20,5 +20,5 @@ module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
     const options = {
         timestamps: true
     }
-    return sequelize.define("CommentRisto", attributes, options);
+    return sequelize.define("Request", attributes, options);
 };

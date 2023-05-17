@@ -1,4 +1,4 @@
-module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
+module.exports = function defineNotificationModel(sequelize, Sequelize) {
     const attributes = {
         id: {
             type: Sequelize.INTEGER,
@@ -13,12 +13,12 @@ module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
         },
         status: {
             type: Sequelize.ENUM,
-            values: ['approved', 'pending','notApproved'],
-            defaultValue: 'pending'
+            values: ['read', 'unread'],
+            defaultValue: 'unread'
         },
     };
     const options = {
         timestamps: true
     }
-    return sequelize.define("CommentRisto", attributes, options);
+    return sequelize.define("Notification", attributes, options);
 };

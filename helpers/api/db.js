@@ -44,8 +44,12 @@ async function initialize() {
     db.Role = require("../../server/models/role.model.js")(sequelize, Sequelize);
     db.Risto = require("../../server/models/risto.model.js")(sequelize, Sequelize);
     db.CommentsRisto = require("../../server/models/commentsRisto.model.js")(sequelize, Sequelize);
+    db.Notification = require("../../server/models/notification.model.js")(sequelize, Sequelize);
+    db.Event = require("../../server/models/event.model.js")(sequelize, Sequelize);
+    db.Request = require("../../server/models/request.model.js")(sequelize, Sequelize);
 
     // /** RUOLI */
+    // await db.Risto.create({ id: 0, name: "user" });
     // await db.Risto.create({ id: 1, name: "ristoratore" });
     // await db.Risto.create({ id: 2, name: "worker" });
     // await db.Risto.create({ id: 99, name: "admin" });
@@ -81,6 +85,8 @@ async function initialize() {
 
     // sync all models with database
     await sequelize.sync({ alter: true });
+    
+    // force sync models with database
     //await sequelize.sync({force: true });
 
     db.initialized = true;
