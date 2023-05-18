@@ -225,10 +225,10 @@ export default function PrivateLayout({ children }) {
             </nav>
             <div className="antialiased bg-gray-50 dark:bg-gray-900">
                 <SidebarComponent currentPage={pathRoute} showClass={showClass} />
-                <main className={`${fixMargin} p-4 h-auto pt-20`}>
+                <main className={`${fixMargin} p-4 h-screen pt-20`}>
                     <Alert />
                     {children}
-                    <footer className="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800">
+                    <footer className="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 z-20">
                         <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
                             &copy; 2023 <a href="http://localhost:3000/" className="hover:underline" target="_blank">Alfremo.com</a>. All rights reserved.
                         </p>

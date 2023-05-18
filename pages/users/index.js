@@ -23,8 +23,8 @@ function Index() {
         <>
             {/* <NavbarComponent /> */}
             <Alert />
-            <section className="bg-gray-10 dark:bg-gray-900 p-3 sm:p-5 antialiased pt-8 pb-8">
-                <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <section className=" bg-gray-10 dark:bg-gray-900 p-3 sm:p-5 antialiased pt-8 pb-8">
+                <div className="mx-auto max-w-screen-xxl px-4 lg:px-12">
                     <div className="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg mb-5">
                         <div className="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                             <div className="w-full md:w-1/2">
@@ -116,6 +116,20 @@ function Index() {
                         </div>
                     </div>
                     <TableComponent />
+                    <div class="pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                        <div
+                            class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
+                        ></div>
+                        <div
+                            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+                        ></div>
+                        <div
+                            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+                        ></div>
+                        <div
+                            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+                        ></div>
+                    </div>
                 </div>
             </section>
         </>
