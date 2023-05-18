@@ -1,4 +1,4 @@
-import {Table} from "flowbite-react";
+import { Table } from "flowbite-react";
 import TableHeadComponent from "./TableHeadComponent";
 import TableBodyComponent from "./TableBodyComponent";
 

@@ -5,6 +5,7 @@ const tableColumns = [
     'First Name',
     'Last Name',
     'Status',
+    'Role',
     'Action'
 ]
 
