@@ -27,6 +27,23 @@ export default function ChangelogComponent(props) {
                         <div className="-my-4 divide-y divide-gray-200 dark:divide-gray-700">
                             <div className="flex flex-col gap-2 py-4 sm:gap-6 sm:flex-row sm:items-center">
                                 <p className="w-32 text-lg font-normal text-gray-500 sm:text-right dark:text-gray-400 shrink-0">
+                                    Version 0.1.3
+                                </p>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                    <a href="#" className="hover:underline">
+                                    Public and Private layouts</a>
+                                </h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                    -
+                                </h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                    <a href="#" className="hover:underline">
+                                    <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-1.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Fix</span>
+                                    The sidebar button doesn't work</a>
+                                </h3>
+                            </div>
+                            <div className="flex flex-col gap-2 py-4 sm:gap-6 sm:flex-row sm:items-center">
+                                <p className="w-32 text-lg font-normal text-gray-500 sm:text-right dark:text-gray-400 shrink-0">
                                     Version 0.1.2c
                                 </p>
                                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
