@@ -25,7 +25,7 @@ export default function TableBodyComponent() {
 
     useEffect(() => {
         userService.getAll().then(x => setUsers(x));
-        console.log(users)
+        // console.log(users)
     }, []);
 
     return (

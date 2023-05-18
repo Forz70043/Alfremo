@@ -14,8 +14,7 @@ const navbarItemsPrivate = [
     { title: 'Esci', path: '/logout', active: false, onClick: (userService.logout) },
 ];
 
-export default function NavbarComponent({ currentPage, onCollapse }) {
-    console.log(currentPage, onCollapse);
+export default function NavbarComponent({ currentPage }) {
     return (
         <>
             <Navbar fluid={true} rounded={false} className="bg-white border-b border-gray-100 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">

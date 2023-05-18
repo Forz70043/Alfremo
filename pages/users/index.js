@@ -16,7 +16,7 @@ function Index() {
 
     useEffect(() => {
         userService.getAll().then(x => setUsers(x));
-        console.log(users)
+        // console.log(users)
     }, []);
 
     return (

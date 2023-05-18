@@ -1,6 +1,5 @@
 import { Sidebar } from "flowbite-react";
-import { useSession, signIn, signOut } from "next-auth/react"
-import ThemeToggle from "./ThemeToggleComponent";
+// import { useSession, signIn, signOut } from "next-auth/react"
 import { userService } from 'services';
 
 const navbarItemsPrivate = [
