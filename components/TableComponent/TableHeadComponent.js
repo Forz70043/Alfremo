@@ -16,7 +16,6 @@ export default function TableHeadComponent() {
                     <Checkbox />
                 </Table.HeadCell>
                 {tableColumns.map((tableColumn, index) => <Table.HeadCell key={index}>{tableColumn}</Table.HeadCell>)}
-
             </Table.Head>
         </>
     )

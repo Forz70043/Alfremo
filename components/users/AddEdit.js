@@ -70,7 +70,7 @@ function AddEdit(props) {
                             <div className="flex justify-between sm:flex-row sm:space-y-0 sm:space-x-0">
                                 <div className="flex items-start">
                                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                        {props.titleRegisterLogin ?? 'Create Account'}
+                                        {props.titleRegisterLogin ?? 'Edit Account'}
                                     </h1>
                                 </div>
                             </div>

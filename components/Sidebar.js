@@ -8,56 +8,27 @@ const navbarItemsPrivate = [
     { title: 'Esci', path: '/logout', active: false, onClick: (userService.logout) },
 ];
 
-export default function SidebarComponent(props) {
-
-
+export default function SidebarComponent({currentPage,showClass}) {
     return (
         <>
-            {/* <Navbar fluid={true} rounded={false} className="bg-white border-b border-gray-100 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
-                <Navbar.Brand href="/">
-                    <img src="http://localhost:3000/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Alfremo Logo" />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{props.titleBrand ?? ''}</span>
-                </Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse>
-                    {navbarItems.map(
-                        (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
-                    )}
-                    {userService.userValue ?
-                        navbarItemsPrivate.map(
-                            (navbarItem, index) => <Navbar.Link key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Navbar.Link>
-                        ) : null}
-                    <ThemeToggle />
-                </Navbar.Collapse>
-            </Navbar> 
-             {<Navbar.Link href="/about" active={props.currentPage === 'about' ? true : false}> About</Navbar.Link>
-                    <Navbar.Link href="/services" active={props.currentPage === 'services' ? true : false}> Services</Navbar.Link>
-                    <Navbar.Link href="/contact" active={props.currentPage === 'contact' ? true : false}> Contact</Navbar.Link>} */}
-            <aside
-                className="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-                aria-label="Sidenav"
-                id="drawer-navigation"
-            >
-                <Sidebar>
-                    <Sidebar.Items>
-                        <Sidebar.ItemGroup>
-                            {navbarItemsPrivate.map(
-                                (navbarItem, index) => <Sidebar.Item key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={props.currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Sidebar.Item>
-                            )}
-                        </Sidebar.ItemGroup>
-                    </Sidebar.Items>
-                </Sidebar>
-                
+            <Sidebar id="sidebar-navigation" className={`${showClass} fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}>
+                <Sidebar.Items>
+                    <Sidebar.ItemGroup>
+                        {navbarItemsPrivate.map(
+                            (navbarItem, index) => <Sidebar.Item key={index} href={navbarItem.path} onClick={navbarItem.onClick} active={currentPage === navbarItem.path ? true : false}> {navbarItem.title}</Sidebar.Item>
+                        )}
+                    </Sidebar.ItemGroup>
+                </Sidebar.Items>
                 <div
-                    class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20"
+                    className="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20"
                 >
                     <a
                         href="#"
-                        class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
                     >
                         <svg
                             aria-hidden="true"
-                            class="w-6 h-6"
+                            className="w-6 h-6"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -70,38 +41,38 @@ export default function SidebarComponent(props) {
                     <a
                         href="#"
                         data-tooltip-target="tooltip-settings"
-                        class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
                     >
                         <svg
                             aria-hidden="true"
-                            class="w-6 h-6"
+                            className="w-6 h-6"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             ></path>
                         </svg>
                     </a>
                     <div
                         id="tooltip-settings"
                         role="tooltip"
-                        class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip"
+                        className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip"
                     >
                         Settings page
-                        <div class="tooltip-arrow" data-popper-arrow></div>
+                        <div className="tooltip-arrow" data-popper-arrow></div>
                     </div>
                     <button
                         type="button"
                         data-dropdown-toggle="language-dropdown"
-                        class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
                     >
                         <svg
                             aria-hidden="true"
-                            class="h-5 w-5 rounded-full mt-0.5"
+                            className="h-5 w-5 rounded-full mt-0.5"
                             xmlns="http://www.w3.org/2000/svg"
                             xmlnsXlink="http://www.w3.org/1999/xlink"
                             viewBox="0 0 3900 3900"
@@ -110,7 +81,7 @@ export default function SidebarComponent(props) {
                             <path
                                 d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0"
                                 stroke="#fff"
-                                stroke-width="300"
+                                strokeWidth="300"
                             />
                             <path fill="#3c3b6e" d="M0 0h2964v2100H0z" />
                             <g fill="#fff">
@@ -139,26 +110,26 @@ export default function SidebarComponent(props) {
                         </svg>
                     </button>
                     <div
-                        class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                        className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
                         id="language-dropdown"
                     >
-                        <ul class="py-1" role="none">
+                        <ul className="py-1" role="none">
                             <li>
                                 <a
                                     href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600"
+                                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600"
                                     role="menuitem"
                                 >
-                                    <div class="inline-flex items-center">
+                                    <div className="inline-flex items-center">
                                         <svg
                                             aria-hidden="true"
-                                            class="h-3.5 w-3.5 rounded-full mr-2"
+                                            className="h-3.5 w-3.5 rounded-full mr-2"
                                             xmlns="http://www.w3.org/2000/svg"
                                             id="flag-icon-css-us"
                                             viewBox="0 0 512 512"
                                         >
-                                            <g fill-rule="evenodd">
-                                                <g stroke-width="1pt">
+                                            <g fillRule="evenodd">
+                                                <g strokeWidth="1pt">
                                                     <path
                                                         fill="#bd3d44"
                                                         d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
@@ -189,13 +160,13 @@ export default function SidebarComponent(props) {
                             <li>
                                 <a
                                     href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
+                                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
                                     role="menuitem"
                                 >
-                                    <div class="inline-flex items-center">
+                                    <div className="inline-flex items-center">
                                         <svg
                                             aria-hidden="true"
-                                            class="h-3.5 w-3.5 rounded-full mr-2"
+                                            className="h-3.5 w-3.5 rounded-full mr-2"
                                             xmlns="http://www.w3.org/2000/svg"
                                             id="flag-icon-css-de"
                                             viewBox="0 0 512 512"
@@ -211,18 +182,18 @@ export default function SidebarComponent(props) {
                             <li>
                                 <a
                                     href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
+                                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
                                     role="menuitem"
                                 >
-                                    <div class="inline-flex items-center">
+                                    <div className="inline-flex items-center">
                                         <svg
                                             aria-hidden="true"
-                                            class="h-3.5 w-3.5 rounded-full mr-2"
+                                            className="h-3.5 w-3.5 rounded-full mr-2"
                                             xmlns="http://www.w3.org/2000/svg"
                                             id="flag-icon-css-it"
                                             viewBox="0 0 512 512"
                                         >
-                                            <g fill-rule="evenodd" stroke-width="1pt">
+                                            <g fillRule="evenodd" strokeWidth="1pt">
                                                 <path fill="#fff" d="M0 0h512v512H0z" />
                                                 <path fill="#009246" d="M0 0h170.7v512H0z" />
                                                 <path fill="#ce2b37" d="M341.3 0H512v512H341.3z" />
@@ -235,13 +206,13 @@ export default function SidebarComponent(props) {
                             <li>
                                 <a
                                     href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600"
+                                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600"
                                     role="menuitem"
                                 >
-                                    <div class="inline-flex items-center">
+                                    <div className="inline-flex items-center">
                                         <svg
                                             aria-hidden="true"
-                                            class="h-3.5 w-3.5 rounded-full mr-2"
+                                            className="h-3.5 w-3.5 rounded-full mr-2"
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlnsXlink="http://www.w3.org/1999/xlink"
                                             id="flag-icon-css-cn"
@@ -293,7 +264,7 @@ export default function SidebarComponent(props) {
                         </ul>
                     </div>
                 </div>
-            </aside>
+            </Sidebar>
         </>
     )
 }

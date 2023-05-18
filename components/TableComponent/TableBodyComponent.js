@@ -1,12 +1,12 @@
 import {
     Table,
-    Avatar,
-    Rating,
     Checkbox
 } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { userService } from "@/services";
 import Link from "next/link";
+import { Spinner } from '@/components/Spinner';
+
 
 
 export default function TableBodyComponent() {

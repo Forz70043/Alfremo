@@ -3,20 +3,20 @@ import React from 'react';
 export default function TermsComponent(props) {
     return (
         <>
-            <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
-                <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-                    <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-                        <header class="mb-4 lg:mb-6 not-format">
-                            <address class="flex items-center mb-6 not-italic">
-                                <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+            <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
+                <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
+                    <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                        <header className="mb-4 lg:mb-6 not-format">
+                            <address className="flex items-center mb-6 not-italic">
+                                <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                                     <div>
-                                        <p class="text-base font-light text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                        <p className="text-base font-light text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
                                     </div>
                                 </div>
                             </address>
-                            <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">Acceptance of Terms and Conditions</h1>
+                            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">Acceptance of Terms and Conditions</h1>
                         </header>
-                        <p class="lead">By accessing and using this website, the user agrees to be bound by these Terms and Conditions, as well as applicable laws and regulations. If the user does not agree to these Terms and Conditions, they should not access or use the website.</p><br/>
+                        <p className="lead">By accessing and using this website, the user agrees to be bound by these Terms and Conditions, as well as applicable laws and regulations. If the user does not agree to these Terms and Conditions, they should not access or use the website.</p><br/>
                         
                         <h2 className='font-bold'>Intellectual Property</h2>
                         <p>All content, trademarks, and intellectual property rights on the website are the exclusive property of the company or its suppliers. The user does not have the right to use or reproduce such content, trademarks, or intellectual property rights without written permission.</p>

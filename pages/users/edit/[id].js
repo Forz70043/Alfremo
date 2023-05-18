@@ -23,7 +23,6 @@ function Edit() {
 
     return (
         <Layout>
-            <h1>Edit User</h1>
             {user ? <AddEdit user={user} /> : <Spinner />}
         </Layout>
     );
