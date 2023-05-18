@@ -8,6 +8,7 @@ import HeroComponent from '@/components/HeroComponent';
 import PriceComponent from '@/components/PriceComponent';
 import ContentComponent from '@/components/ContentComponent';
 import NewsletterComponent from '@/components/NewsletterComponent';
+import ContactFormComponent from '@/components/ContactFormComponent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function Home() {
       <CardComponent />
       <PriceComponent />
       <NewsletterComponent />
+      <ContactFormComponent />
     </>
   )
 }
