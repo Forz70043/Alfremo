@@ -1,5 +1,6 @@
 import { Footer } from "flowbite-react"
 import {BsFacebook, BsInstagram, BsGithub, BsTwitter, BsDribbble} from '@heroicons/react/24/solid';
+
 export default function FooterComponent() {
     return(
         <>
@@ -7,8 +8,7 @@ export default function FooterComponent() {
                 <div className="w-full">
                     <div className="pb-8 grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                         <div>
-                            <Footer.Brand href="/" src="https://flowbite.com/docs/images/logo.svg" 
-                            alt="Alfremo Logo" name="Alfremo" />
+                            <Footer.Brand href="/" src="/logo_alfremo.jpg" alt="Alfremo Logo" name="Alfremo" />
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                             <div>
@@ -36,7 +36,7 @@ export default function FooterComponent() {
                     </div>
                     <Footer.Divider />
                     <div className="w-full sm:flex sm:items-center sm:justify-between">
-                        <Footer.Copyright href="#" by="Alfremo™" year={2022} />
+                        <Footer.Copyright href="#" by="Alfremo™" year={2023} />
                         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                             {/* {<Footer.Icon href="#" icon={BsFacebook} />
                             <Footer.Icon href="#" icon={BsInstagram} />

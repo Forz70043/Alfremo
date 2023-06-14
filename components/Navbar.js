@@ -19,7 +19,7 @@ export default function NavbarComponent({ currentPage }) {
         <>
             <Navbar fluid={true} rounded={false} className="bg-white border-b border-gray-100 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
                 <Navbar.Brand href="/">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Alfremo Logo" />
+                    <img src="/logo_alfremo.jpg" className="mr-3 h-6 sm:h-9" alt="Alfremo Logo" />
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{'Alfremo'}</span>
                 </Navbar.Brand>
                 <Navbar.Toggle />
