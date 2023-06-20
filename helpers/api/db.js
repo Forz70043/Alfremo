@@ -71,11 +71,22 @@ async function initialize() {
         //     otherKey: "roleId"
         // });
 
+
+function userModel(sequelize) {
+    const attributes = {
+        email: { type: DataTypes.STRING, allowNull: false },
+        hash: { type: DataTypes.STRING, allowNull: false },
+        firstName: { type: DataTypes.STRING, allowNull: false },
+        lastName: { type: DataTypes.STRING, allowNull: false },
+        terms: { type: DataTypes.BOOLEAN, allowNull: false }
+    };
+
         // // Ristoranti
         // db.Risto.belongsTo(db.User, {
         //     constraints: true,
         // });
         // db.User.hasMany(db.Risto);
+
 
         // db.CommentsRisto.belongsTo(db.Risto, {
         //     constraint: true, onDelete: "CASCADE"
@@ -83,9 +94,9 @@ async function initialize() {
         // db.Risto.hasMany(db.CommentsRisto);
         // //FINE Ristorianti
         
-    } catch (error) {
-        console.log(error)
-    }
+    // } catch (error) {
+    //     console.log(error)
+    // }
     
     // sync all models with database
     await sequelize.sync({ alter: true });
