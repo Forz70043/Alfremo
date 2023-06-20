@@ -29,7 +29,14 @@ async function login(email, password) {
     localStorage.setItem('user', JSON.stringify(user));
 }
 
-function logout() {
+async function logout() {
+    try {
+        let params = userSubject.value;
+        params.status = 'offline';
+        await fetchWrapper.put(`${baseUrl}/${userSubject.value.id}`, params);
+    } catch (error) {
+        console.log('-----Error-----\n' + error)
+    }
     alertService.clear();
     // remove user from local storage, publish null to user subscribers and redirect to login page
     localStorage.removeItem('user');

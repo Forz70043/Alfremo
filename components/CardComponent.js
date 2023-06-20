@@ -17,7 +17,7 @@ export default function CardComponent(props) {
                     </div>
                     <div className="grid gap-8 lg:grid-cols-3">
                         {cards.map((card, index) => (
-                            <article className="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <article key={index} className="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <img className="w-full rounded-lg sm:rounded-none" src={card.imgSrc} alt="Bonnie Avatar" />
                                 <h2 className="mb-2 p-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">{card.title}</a></h2>
                                 <p className="mb-5 p-6 font-light text-gray-500 dark:text-gray-400">{card.description}</p>

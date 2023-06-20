@@ -1,4 +1,4 @@
-module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
+module.exports = function defineEventModel(sequelize, Sequelize) {
     const attributes = {
         id: {
             type: Sequelize.INTEGER,
@@ -11,14 +11,18 @@ module.exports = function defineCommentRistoModel(sequelize, Sequelize) {
         txt: {
             type: Sequelize.STRING           // VARCHAR(255)
         },
+        type: {
+            type: Sequelize.ENUM,
+            values: ['message', 'general','news'],
+        },
         status: {
             type: Sequelize.ENUM,
-            values: ['approved', 'pending','notApproved'],
-            defaultValue: 'pending'
+            values: ['read', 'unread'],
+            defaultValue: 'unread'
         },
     };
     const options = {
         timestamps: true
     }
-    return sequelize.define("CommentRisto", attributes, options);
+    return sequelize.define("Event", attributes, options);
 };

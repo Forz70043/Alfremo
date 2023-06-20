@@ -29,8 +29,6 @@ db.risto = require("./risto.model.js")(sequelize, Sequelize);
 db.commentsRisto = require("./commentsRisto.model.js")(sequelize, Sequelize);
 db.requests = require("../models/requests.model")(sequelize, Sequelize);
 
-
-
 // Many-to-Many association to connect to the source to multiple targets
 // A customer will certainly have a user role and his specialization - Example:
 // Client admin = roles['user','admin']

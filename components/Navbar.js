@@ -16,8 +16,6 @@ const navbarItemsPrivate = [
 ];
 
 export default function NavbarComponent(props) {
-
-
     return (
         <>
             <Navbar fluid={true} rounded={false}>

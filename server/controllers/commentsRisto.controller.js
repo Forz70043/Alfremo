@@ -67,7 +67,6 @@ exports.getComment = (req, res, next) => {
   Comment.findAll({
     include:[
       { model: Comment },
-      { model: Task }
   ],
     where: {
       id: commentId,

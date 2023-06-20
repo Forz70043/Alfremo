@@ -5,6 +5,7 @@ import { appWithTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { userService } from 'services';
+import { Alert } from '@/components/Alert'
 
 function App({ Component, pageProps }) {
 
@@ -52,11 +53,11 @@ function App({ Component, pageProps }) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout>
         {authorized &&
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         }
-      </Layout>
     </SessionProvider>
   )
 }
