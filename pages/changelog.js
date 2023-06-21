@@ -1,17 +1,16 @@
 import NavbarComponent from "@/components/Navbar";
-import SearchComponent from "@/components/SearchComponent";
-import styles from '@/styles/Home.module.css'
+import ChangelogComponent from "@/components/ChangelogComponent";
 import {useRouter} from 'next/router';
 
-export default function Search() {
+export default function Changelog() {
     const router = useRouter();
     let pathRoute = router.pathname.toLocaleLowerCase();
     return(
         <>  
             <NavbarComponent currentPage={pathRoute} />
-            <main className={styles.main}>
-                <SearchComponent id="ciccio2" />
-            </main>
+            <div>
+                <ChangelogComponent id="changelog" />
+            </div>
         </>
     )
 }

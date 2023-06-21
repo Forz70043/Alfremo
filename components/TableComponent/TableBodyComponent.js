@@ -1,55 +1,77 @@
 import {
-    Table, 
-    Avatar,
-    Rating
+    Table,
+    Checkbox
 } from "flowbite-react";
+import { useState, useEffect } from "react";
+import { userService } from "@/services";
+import Link from "next/link";
+import { Spinner } from '@/components/Spinner';
 
-const categories = ["cucina", "bar", "sala"]
 
-const rowsTable = [
-    {name: "Ciccio Pasitccio", status: true, category: categories[0], price: "120€", raking:4 },
-    {name: "Casper Booom", status: false, category: categories[1], price: "80€", raking:3 },
-    {name: "Olivia", status: true, category: categories[2], price: "50€", raking:4 },
-    {name: "Calimero", status:true, category: categories[2], price: "70€", raking: 5 }
-]
 
-export default function TableBodyComponent(){
-    return(
+export default function TableBodyComponent() {
+
+    const [users, setUsers] = useState(null);
+    
+    function deleteUser(id) {
+        setUsers(users.map(x => {
+            if (x.id === id) { x.isDeleting = true; }
+            return x;
+        }));
+        userService.delete(id).then(() => {
+            setUsers(users => users.filter(x => x.id !== id));
+        });
+    }
+
+    useEffect(() => {
+        userService.getAll().then(x => setUsers(x));
+        // console.log(users)
+    }, []);
+
+    return (
         <>
             <Table.Body className="divide-y">
-                {rowsTable.map((rowTable, index) =>{
-                    return(
+                {users?.map((user, index) => {
+                    return (
                         <>
                             <Table.Row key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                {/* <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                                     <div className="flex flex-wrap gap-2">
-                                        <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>
-                                        {rowTable.name}
+                                        <Avatar img="http://localhost:3000/docs/images/people/profile-picture-5.jpg" rounded={true}/>
+                                        {user.name}
+                                    </div>
+                                </Table.Cell> */}
+                                <Table.Cell className="!p-4">
+                                    <Checkbox />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <div className="flex items-center">
+                                        {user.email}
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell>
                                     <div className="flex items-center">
-                                    {rowTable.status ? <div className="inline-block w-4 h-4 mr-2 bg-green-600 rounded-full"></div>
+                                        {user.firstName}
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell>{user.lastName}</Table.Cell>
+                                <Table.Cell>
+                                    <div className="flex items-center">
+                                    {user.status === 'online' ? <div className="inline-block w-4 h-4 mr-2 bg-green-600 rounded-full"></div>
                                     : <div className="inline-block w-4 h-4 mr-2 bg-red-600 rounded-full"></div>}
                                     </div>
                                 </Table.Cell>
-                                <Table.Cell>{rowTable.category}</Table.Cell>
+                                <Table.Cell>{user.role}</Table.Cell>
                                 <Table.Cell>
-                                    <Rating key={index+1}>
-                                        <Rating.Star />
-                                        <Rating.Star />
-                                        <Rating.Star />
-                                        <Rating.Star />
-                                        <Rating.Star filled={false} />
-                                    </Rating>
+                                    <Link type="button" href={`/users/edit/${user.id}`} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 me-1">Edit</Link>
+                                    <button onClick={() => deleteUser(user.id)} className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" style={{ width: '90px' }} disabled={user.isDeleting}>
+                                        {user.isDeleting
+                                            ? <span className="spinner-border spinner-border-sm"></span>
+                                            : <span>Delete</span>
+                                        }
+                                    </button>
                                 </Table.Cell>
-                                <Table.Cell>{rowTable.price}</Table.Cell>
-                                <Table.Cell>
-                                    <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
-                                        Contatta
-                                    </a>
-                                </Table.Cell>
-                                
+
                             </Table.Row>
                         </>
                     )
@@ -58,3 +80,4 @@ export default function TableBodyComponent(){
         </>
     )
 }
+

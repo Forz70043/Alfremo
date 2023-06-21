@@ -1,16 +1,24 @@
+import { ThemeProvider } from 'next-themes'
 import Header from './Header'
-import FooterComponent from './FooterComponent';
+import { userService } from 'services';
+import PrivateLayout from './PrivateLayout';
+import PublicLayout from './PublicLayout';
 
-export default function Layout({children}){
-    
+export default function Layout({ children }) {
+
     return (
         <>
-        <Header title="Alfremo"/>
-        {/* {<NavbarComponent currentPage={children.type.name.toLowerCase()} titleBrand="Alfremo" />} */}
-        <main>
-            {children}
-        </main>
-        <FooterComponent />
+            <ThemeProvider attribute="class">
+                <Header title="Alfremo" />
+                {/* <NavbarComponent currentPage={pathRoute} onCollapse={onCollapse} /> */}
+                {userService.userValue ?
+                    <PrivateLayout children={children}/>
+                    :
+                    <PublicLayout children={children} />
+                }
+
+                {/* {<NavbarComponent currentPage={children.type.name.toLowerCase()} titleBrand="Alfremo" />} */}
+            </ThemeProvider>
         </>
     )
 }
