@@ -7,13 +7,11 @@ function apiHandler(handler) {
         const method = req.method.toLowerCase();
 
         // check handler supports HTTP method
-        if (!handler[method])
-            return res.status(405).end(`Method ${req.method} Not Allowed`);
+        if (!handler[method]) return res.status(405).end(`Method ${req.method} Not Allowed`);
 
         try {
             // init db if required
-            if (!db.initialized)
-                await db.initialize();
+            if (!db.initialized) await db.initialize();
 
             // global middleware
             await jwtMiddleware(req, res);

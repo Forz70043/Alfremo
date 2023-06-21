@@ -17,6 +17,7 @@ export default function PrivateLayout({ children }) {
         setShow(!show);
         setShowMargin(!showMargin);
     }
+
     const navbarItems = [
         { title: 'Home', path: '/', active: false },
         { title: 'Accedi', path: '/login', active: false },
@@ -49,7 +50,7 @@ export default function PrivateLayout({ children }) {
                             <span className="sr-only">Toggle sidebar</span>
                         </button>
                         <a href="http://localhost:3000" className="flex mr-4">
-                            <img src="https://flowbite.s3.amazonaws.com/logo.svg" className="mr-3 h-8" alt="Alfremo Logo" />
+                            <img src="/logo_alfremo.jpg" className="mr-3 h-8" alt="Alfremo Logo" />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Alfremo</span>
                         </a>
                         {/* <form action="#" method="GET" className="hidden lg:block lg:pl-2">
