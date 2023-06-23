@@ -11,8 +11,13 @@ function apiHandler(handler) {
 
         try {
             // init db if required
-            if (!db.initialized) await db.initialize();
-
+            /*if (!db.initialized){ 
+                console.log("db.init:", db.initialized); 
+                await db.initialize(); 
+                db.initialized=true;
+            }
+            */
+            console.log("db init: ", db.initialized);
             // global middleware
             await jwtMiddleware(req, res);
 

@@ -22,8 +22,9 @@ export const userService = {
 };
 
 async function login(email, password) {
+    console.log("user login: ", {email, password});
     const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { email, password });
-
+    console.log("obj user: ",user);
     // publish user to subscribers and store in local storage to stay logged in between page refreshes
     userSubject.next(user);
     localStorage.setItem('user', JSON.stringify(user));

@@ -56,7 +56,6 @@ export default function Register(props) {
                                         {props.titleRegisterLogin ?? 'Create Account'}
                                     </h1>
                                 </div>
-                                <ThemeToggle />
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
                                 {/* {<div className="flex flex-col gap-4" id="toggle">

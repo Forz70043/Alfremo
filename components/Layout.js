@@ -5,7 +5,8 @@ import PrivateLayout from './PrivateLayout';
 import PublicLayout from './PublicLayout';
 
 export default function Layout({ children }) {
-
+    console.log("user service: ", userService);
+    console.log("children: ", children);
     return (
         <>
             <ThemeProvider attribute="class">

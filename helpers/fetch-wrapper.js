@@ -20,6 +20,7 @@ function request(method) {
         if (body) {
             requestOptions.headers['Content-Type'] = 'application/json';
             requestOptions.body = JSON.stringify(body);
+            console.log("Header from Wrapper: ", requestOptions.headers)
         }
         return fetch(url, requestOptions).then(handleResponse);
     }
